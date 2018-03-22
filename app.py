@@ -1,7 +1,5 @@
 # import the Flask class from the flask module
 from flask import Flask, render_template, redirect, url_for, request
-from functools import wraps
-import sqlite3
 import requests
 import pandas as pd
 import datetime
