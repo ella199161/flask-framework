@@ -18,13 +18,13 @@ app = Flask(__name__)
 
 
 # use decorators to link the function to a url
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/')
 def main():
 	return redirect(url_for('stock'))
 
 
 #@login_required
-@app.route('/stock', methods = ['GET', 'POST'])
+@app.route('/stock')
 def stock():
 	stockticker = request.args.get('ticker')
 	stockclose = request.args.get('close')
