@@ -1,5 +1,6 @@
 # import the Flask class from the flask module
 from flask import Flask, render_template, redirect, url_for, request
+from boto.s3.connection import S3Connection
 import requests
 import pandas as pd
 import datetime
@@ -28,7 +29,7 @@ def stock():
 	stockopen = request.args.get('open')
 	stockAclose = request.args.get('Aclose')
 	stockAopen = request.args.get('Aopen')
-	print('he is', stockticker, stockclose, stockopen ,stockAclose,stockAopen,'here')
+	#print('he is', stockticker, stockclose, stockopen ,stockAclose,stockAopen,'here')
 	script = 0
 	div = 0
 	js_resources = INLINE.render_js()
@@ -38,8 +39,9 @@ def stock():
 	if stockticker:
 		quandl = 'https://www.quandl.com/api/v3/datasets/WIKI/'
 		timeURL = '&start_date=' + (datetime.datetime.now() - datetime.timedelta(days=30) ).strftime('%Y-%m-%d')+ '&end_date=' + (datetime.datetime.now() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
-		my_token = '.json?api_key=z3Bsb_-YBr-VQVNsGcNn'
-		all_url = quandl + stockticker + my_token + timeURL
+		s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+		my_token = '.json?api_key='
+		all_url = quandl + stockticker + my_token +s3+ timeURL
 		Respond = requests.get(all_url)  #data from web
 		HTTP_status = Respond.status_code
 		if HTTP_status == 200:
@@ -49,7 +51,7 @@ def stock():
 			df['avg'] = (df['Open'] + df['Close'])/2
 			df['range'] = abs(df['Close']-df['Open'])      		
 
-			print(df.head())
+			#print(df.head())
 			w = 12*60*60*1000 
 #plot
 			fig = figure(plot_width = 800, plot_height = 600, x_axis_type = "datetime", toolbar_location = "below", tools = "crosshair, pan, wheel_zoom, box_zoom, reset", title = stockticker + ' Graph')
