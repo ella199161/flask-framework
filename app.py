@@ -1,6 +1,6 @@
 # import the Flask class from the flask module
 from flask import Flask, render_template, redirect, url_for, request
-from boto.s3.connection import S3Connection
+#from boto.s3.connection import S3Connection
 import requests
 import pandas as pd
 import datetime
@@ -18,7 +18,15 @@ app = Flask(__name__)
 # use decorators to link the function to a url
 @app.route('/')
 def main():
-	return redirect(url_for('stock'))
+	return redirect(url_for('index'))
+
+@app.route('/index')
+def index():
+	return render_template('index.html') 
+
+@app.route('/model')
+def model():
+	return render_template('model.html') 
 
 
 #@login_required
@@ -36,53 +44,12 @@ def stock():
 	css_resources = INLINE.render_css()
 
 
-	if stockticker:
-		quandl = 'https://www.quandl.com/api/v3/datasets/WIKI/'
-		timeURL = '&start_date=' + (datetime.datetime.now() - datetime.timedelta(days=30) ).strftime('%Y-%m-%d')+ '&end_date=' + (datetime.datetime.now() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
-		s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
-		my_token = '.json?api_key='
-		all_url = quandl + stockticker + my_token +s3+ timeURL
-		Respond = requests.get(all_url)  #data from web
-		HTTP_status = Respond.status_code
-		if HTTP_status == 200:
-			rjson = Respond.json()['dataset']
-			df = pd.DataFrame(rjson['data'], columns = rjson['column_names'])
-			df['Date'] = pd.to_datetime(df['Date'])
-			df['avg'] = (df['Open'] + df['Close'])/2
-			df['range'] = abs(df['Close']-df['Open'])      		
-
-			#print(df.head())
-			w = 12*60*60*1000 
-#plot
-			fig = figure(plot_width = 800, plot_height = 600, x_axis_type = "datetime", toolbar_location = "below", tools = "crosshair, pan, wheel_zoom, box_zoom, reset", title = stockticker + ' Graph')
-			
-
-			if stockclose == 'close':
-				fig.line(df['Date'],df['Close'],color = 'black', legend = 'Close')
-
-			if stockopen == 'open':
-				fig.line(df['Date'], df['Open'], color = 'red', legend = 'Open')
-
-			if stockAopen == 'Aopen':
-				fig.circle(df['Date'],df['Adj. Open'],color = 'blue', legend = 'Adj. Open')
-
-			if stockAclose == 'Aclose':
-				fig.circle(df['Date'],df['Adj. Close'],color = 'green', legend = 'Adj. Close')
-
-			fig.xaxis.formatter=DatetimeTickFormatter(hours=["%Y-%B-%d"], days=["%Y-%B-%d"], months=["%Y-%B-%d"], years=["%Y-%B-%d"])
-			fig.xaxis.major_label_orientation = pi/4 
-			js_resources = INLINE.render_js()
-			css_resources = INLINE.render_css()  
-			script, div = components(fig, INLINE)
-		else:
-		    return render_template('stock.html', status = {'code':2, 'msg':'Server Error'})
-	
-	else: 
-		return render_template('stock.html', status = {'code': 3, 'message': 'Please input ticker symbol'}, js_resources=js_resources, css_resources=css_resources)  # render a template
 
 
-
-	return render_template('stock.html', status = {'code': 1, 'message': 'Here is the plot'}, stock = {'ticker':stockticker}, plot={'script':script, 'div':div}, js_resources=js_resources, css_resources=css_resources)  # render a template
+	return render_template('stock.html')
+@app.route('/project')
+def projectp():
+	return render_template('project.html') 
 
 
 @app.route('/about')
