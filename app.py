@@ -10,6 +10,8 @@ from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 from math import pi
 from bokeh.models import DatetimeTickFormatter
+import pickle
+from sklearn.ensemble import GradientBoostingClassifier
 
 # create the application object
 app = Flask(__name__)
@@ -29,28 +31,49 @@ def model():
 	return render_template('model.html') 
 
 
-#@login_required
-@app.route('/stock')
-def stock():
-	stockticker = request.args.get('ticker')
-	stockclose = request.args.get('close')
-	stockopen = request.args.get('open')
-	stockAclose = request.args.get('Aclose')
-	stockAopen = request.args.get('Aopen')
-	#print('he is', stockticker, stockclose, stockopen ,stockAclose,stockAopen,'here')
-	script = 0
-	div = 0
-	js_resources = INLINE.render_js()
-	css_resources = INLINE.render_css()
-
-
-
-
-	return render_template('stock.html')
 @app.route('/project')
-def projectp():
-	return render_template('project.html') 
+def project():
 
+	company = request.args.get('company')
+
+	if company == "Prosper":
+		clf = pickle.load(open("Prosper_toy3.pickle", "rb"))
+	Lending_club_clf =1 
+	term = request.args.get('term')
+	home = request.args.get('home')
+	fico = request.args.get('fico')
+	amount = request.args.get('amount')
+	total_acc = request.args.get('total_acc')
+	#income = int(request.args.get('income'))
+	balance = request.args.get('balance')
+	Credit_L = request.args.get('Credit_L')
+	interest = request.args.get('int_rate') 
+	days = request.args.get('days') 
+	
+	#features = pd.Series([int(Credit_L), int(term), int(interest)*1.0/100, int(home), int(fico), int(total_acc)]).reshape(1,6)
+	grade = request.args.get('grade') 
+	if company and fico:
+		features = pd.Series([int(Credit_L), int(term), int(interest)/100*0.1, int(home), int(fico), int(total_acc)])
+
+		ypred = clf.predict(features.reshape(1,6))
+		print(ypred)
+	risk_dict = {"A": 3.983147797773583,"B": 8.3016729850008204,"C": 13.242679912878174, "D": 20.338340799622756, "E": 26.98618268861479, "F": 33.391248563256795, "G" :34.32795211318701}
+
+	if fico:
+		if ypred == 1:
+			return render_template('project.html',status = {'code': 1, 'msg': "GOOD" } ) 
+			
+		else:
+			return render_template('project.html',status = {'code': 1, 'msg': "BAD"} ) 
+		
+	elif days:
+		#param = pickle.load(open("Lending_club_fit_param.pickle", "rb"))
+		print(grade)
+		safe = 100 -  risk_dict[grade]*int(days)/1095 *1.0
+
+		return render_template('project.html',status = {'code': 3, 'msg': safe} ) 
+	else:
+		return render_template('project.html',status = {'code': 2, 'msg': 'Oops'} ) 
 
 @app.route('/about')
 def about():

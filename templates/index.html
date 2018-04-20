@@ -29,39 +29,132 @@
 </div>
 
 
+<br>
+<br>
+<br>
 
-<div class="bk-root">
-    <div class="bk-plotdiv" id="adb22644-b757-47b3-b2ad-9e0c94ce93b8"></div>
+<div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+            <p><b><i class="fa fa-user w3-margin-right"></i>Prosper</b></p><br>
+            <a herf= "https://www.lendingclub.com/">
+      <img src="../static/prosper_logo.jpg" class="w3-round w3-image" alt="Prosper logo" width="300" height="300">
+</a>
+    </div>
+
+    <!-- Hide this text on small devices -->
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i>Lending Club</b></p><br>
+      <a herf = "https://www.prosper.com/">
+      <img src="../static/Lending_Club_logo.jpg" class="w3-round w3-image" alt="Lending Club logo" width="300" height="300">
+</a>
+    </div>
+  </div>
+
+<div align = "center">
+<h1 >About Peer to Peer Lending </h1> 
+<p> When borrowers apply for loan, lending club and prosper assigns a grade, and each grade has its corresponding interest rate. Prosper offer grade: AA, A, B, C, D, E. and lending club offer grade: A, B, C, D, E, F, G. Note that the letter grade across the two lending company might not be directly comparable. </p>
 </div>
+<br>
+<h1 >Grade vs Interest Rate </h1> 
+<div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+<div class="bk-root">
+    <div class="bk-plotdiv" id="92c8ac76-9823-46fa-8deb-fd1a7afdcaff"></div>
+</div>
+<script src="../static/prosper_script_GvsI.js"></script>   
+    </div>
 
-<script src="../static/prosper_script_GvsI.js"></script>
+    <!-- Hide this text on small devices -->
 
-<!--- Prosper lending map-->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+<div class="bk-root">
+    <div class="bk-plotdiv" id="3bf50cf8-bc7d-4b9c-a4cc-6daa6aa70e78"></div>
+</div>
+<script src="../static/Lending_club_script_GvsI.js"></script>   
+    </div>
+  </div>
+
+
+
+
+
+
+<h1 >Both Prosper and Lending Club Covers most part of the country, from the borrowers’ side, we see that California is a big borrowers' state, and Iowa is the smallest borrowers' state. However, on the investors' side, some states have restrictions more than other. Currently Lending Club have more geographical coverage</h1>
+<div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
 <div class="bk-root">
     <div class="bk-plotdiv" id="7f772c7d-6f82-4323-bfe3-67850347a7aa"></div>
 </div>
-<script src="../static/Prosper_map.js"></script>
+<script src="../static/Prosper_map.js"></script>      
+    </div>
+</div>
+    <!-- Hide this text on small devices -->
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+<div class="bk-root">
+    <div class="bk-plotdiv" id="9567edbe-83f7-464c-b958-a45e39668be2"></div>
+</div>
+<script src="../static/Lending_club_map.js"></script>   
+    </div>
+  
+
+
+
+<!--- Prosper lending map-->
+
 
 
 <!--- prosper home ownership
 
 -->
+
+<div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+
 <div class="bk-root">
-    <div class="bk-plotdiv" id="bacf91b4-1d9f-4998-8f8f-271869453596"></div>
+    <div class="bk-plotdiv" id="db5e6b31-fdae-4ce8-bf1b-25e7b0249593"></div>
 </div>
 <script src="../static/prosper_script_HvsI.js"></script>
+    </div>
+
+    <!-- Hide this text on small devices -->
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+<div class="bk-root">
+    <div class="bk-plotdiv" id="b62d3095-0b0e-44fd-ba94-907742d9ee1e"></div>
+</div>
+<script src="../static/Lending_club_script_HvsI.js"></script>
+    </div>
+  </div>
 
 
-    <p>Lets get in touch and talk about your next project.</p>
-    <form action="/action_page.php" target="_blank">
-      <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment">
-      <button class="w3-button w3-black w3-section" type="submit">
-        <i class="fa fa-paper-plane"></i> SEND MESSAGE
-      </button>
-    </form>
+<!--
+
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+
+<div class="bk-root">
+    <div class="bk-plotdiv" id="41d5c75b-444d-41fd-b919-3da8b892f386"></div>
+</div>
+<script src="../static/prosper_script_TvsI.js"></script>
+    </div>
+
+    
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+<div class="bk-root">
+    <div class="bk-plotdiv" id="ef1d6a0d-abde-48a7-9720-a22d50832c15"></div>
+</div>
+<script src="../static/Lending_club_script_TvsI.js"></script>
+
+    </div>
+  </div>
+-->
+
+
+
+    
   </div>
 
 {% endblock %}

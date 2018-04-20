@@ -4,60 +4,66 @@
 <br>
 <br>
 
-<h1>Model Details </h1>
+<h2 class="w3-center">MODEL</h2>
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">Loan Features</h3>
-  <p class="w3-center"><em>I love photography</em></p>
-  <p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<h3 class="w3-center">Loan Features</h3>
+
+<p> I hand pick out the features that exists in both Lending Club and Prosper and run linear regression with lasso regularization to predict the interest rate with given feature. The most important features are: Term, FICO Score, Loan Amount, Home Ownership, Dept to Income Ratio, Total Number of Accounts, Credit History, Employment Status, etc. Some of the feature engineering was done here, for example, I take the log of the annual income and reduce the number of categories of the home ownership, The credit history length is computed by the loan application date minus earliest credit line.  For lending club, the joint feature is integrated into the primary application (basically boost his or hers features). </p>
+
+
+
+
+
   <div class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>My Name</b></p><br>
-      <img src="/w3images/avatar_hat.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
-    </div>
+    <div class=" m6 w3-center w3-padding-large">
+          <p><b><i class="fa fa-user w3-margin-right"></i>Linear Regression</b></p><br>
+      <img src="../static/matrix.png" class="w3-round w3-image" alt="Linear Regression">
+  </div>
 
     <!-- Hide this text on small devices -->
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>Welcome to my website.</p>
+    <div class=" m6 w3-hide-small w3-padding-large">
+      <p> With given loan application feature, I used linear regression with lasso regularization to predict the interest rate from the two companies.</p>
     </div>
   </div>
-  <p class="w3-large w3-center w3-padding-16">Im really good at:</p>
-  <p class="w3-wide"><i class="fa fa-camera"></i>Photography</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:90%">90%</div>
+ <div align = "center"> 
+      <img src="../static/lasso.png" class="w3-round w3-image" alt="Lasso" width="500" height="333">
+ </div>
+
+  <div class="w3-row">
+    <div class="m6 w3-center w3-padding-large">
+          <p><b><i class="fa fa-user w3-margin-right"></i>Gradient Boosted Classifer</b></p><br>
+      <img src="../static/boosted-trees-process.png" class="w3-round w3-image" alt="Linear Regression" width="800" height="400">
   </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Web Design</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:85%">85%</div>
+
+    <!-- Hide this text on small devices -->
+    <div class="m6 w3-hide-small w3-padding-large">
+      <p> In order to predict the loan risk, I used a gradient boosted classifier. Gradient boosting is a machine learning technique which produces a prediction model in the form of an ensemble of weak prediction models. It builds the model in a stage-wise fashion and learn from its mistake from the previous step. I chose gradient boosting for its performance. Also, investor care more about whether the loan is safe or not, rather why it is not safe. Therefore interpretability is not the most important factor here.</p>
+    </div>
   </div>
-  <p class="w3-wide"><i class="fa fa-photo"></i>Photoshop</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
-  </div>
+
+
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      
+      <div class="bk-root">
+    <div class="bk-plotdiv" id="229fa230-8cad-41de-bda4-2680464bdac4"></div>
+    <script src="../static/Lending_club_life.js"></script>   
 </div>
+    </div>
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+<p>Most investors are aware, lending out money to other people come with a risk. The loan will start when the investor decides to take the risk. How about after the loan start? Should the investor expect the money coming back? Here, I developed a real time loan survival model, basically computes the probability of an ongoing loan being paid off on time given its current activity. Therefore, investors have a batter idea of there money, and lead to smarter investment. </p> 
 
-
-
-<!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
+    </div>
   </div>
-</div>
-  <!-- Contact Section -->
-  <div class="w3-container w3-padding-32" id="contact">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
-    <p>Lets get in touch and talk about your next project.</p>
-    <form action="/action_page.php" target="_blank">
-      <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment">
-      <button class="w3-button w3-black w3-section" type="submit">
-        <i class="fa fa-paper-plane"></i> SEND MESSAGE
-      </button>
-    </form>
-  </div>
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
