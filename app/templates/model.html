@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+<br>
+
+<h2 class="w3-center">MODEL</h2>
+<!-- Container (About Section) -->
+
+
+
+
+
+  <div class="w3-row">
+<div class="w3-content w3-container w3-padding-64" id="about">
+<h3 class="w3-center">Loan Features</h3>
+<div class="m6 w3-hide-small w3-padding-large">
+<p> I hand pick out the features that exists in both Lending Club and Prosper and run linear regression with lasso regularization to predict the interest rate with given feature. The most important features are: Term, FICO Score, Loan Amount, Home Ownership, Dept to Income Ratio, Total Number of Accounts, Credit History, Employment Status, etc. Some of the feature engineering was done here, for example, I take the log of the annual income and reduce the number of categories of the home ownership, The credit history length is computed by the loan application date minus earliest credit line.  For lending club, the joint feature is integrated into the primary application (basically boost his or hers features). </p>
+</div>
+
+
+    <!--
+    <div class=" m6 w3-center w3-padding-large">
+          <p><b><i class="fa fa-user w3-margin-right"></i>Linear Regression</b></p><br>
+      <img src="../static/matrix.png" class="w3-round w3-image" alt="Linear Regression">
+  </div>
+
+    
+    <div class=" m6 w3-hide-small w3-padding-large">
+      <p> With given loan application feature, I used linear regression with lasso regularization to predict the interest rate from the two companies.</p>
+    </div>
+  </div>
+ <div align = "center"> 
+      <img src="../static/lasso.png" class="w3-round w3-image" alt="Lasso" width="500" height="333">
+ </div>
+     Hide this text on small devices -->
+  <div class="w3-row">
+    <div class="m6 w3-center w3-padding-large">
+          <p><b><i class="fa fa-user w3-margin-right"></i>Gradient Boosting Classifer</b></p><br>
+      <img src="../static/GBoost.jpg" class="w3-round w3-image" alt="Gradient Boosting" width="800" height="400">
+  </div>
+
+
+    <div class="m6 w3-hide-small w3-padding-large">
+      <p> In order to predict the loan risk, I used a gradient boosting classifier. Gradient boosting is a machine learning technique which produces a prediction model in the form of an ensemble of weak prediction models. It builds the model in a stage-wise fashion and learn from its mistake from the previous step. I chose gradient boosting for its performance. Also, investor care more about whether the loan is safe or not, rather why it is not safe. Therefore interpretability is not the most important factor here.</p>
+    </div>
+  </div>
+
+
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      
+      <div class="bk-root">
+    <div class="bk-plotdiv" id="229fa230-8cad-41de-bda4-2680464bdac4"></div>
+    <script src="../static/Lending_club_life.js"></script>   
+</div>
+    </div>
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+<p> Most investors are aware, lending out money to other people come with a risk. The loan will start when the investor decides to take the risk. How about after the loan start? Should the investor expect the money coming back? Here, I used the Kaplan–Meier estimator and developed a real time loan survival model, basically computes the probability of an ongoing loan being paid off on time given its current activity. Therefore, investors have a batter idea of there money, and lead to smarter investment. </p> 
+
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}
