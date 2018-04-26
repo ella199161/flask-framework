@@ -10,3 +10,5 @@ jinja2
 pip
 simplejson
 nomkl
+scikit-learn
+
