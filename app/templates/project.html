@@ -25,47 +25,69 @@
       <button class="w3-button w3-black w3-section"><i class="fa fa-paper-plane"></i>  Predict Current Loan </button></a>
     </div>
 </div>
+{% if status.code==1 %}
 
+    {{ plot.script|indent(4)|safe }}
+ {% endif %}
 
+{% if status.code==1 %} 
+<div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
 
-  
-        {% if status.code==3 %}
-          <p class="w3-center"> Probability of paying off on time is {{status.msg}}%  </p>
+ 
+<div class="w3-center">
+          {{ plot.div|indent(4)|safe }}
+    </div>
+</div>
+    <!-- Hide this text on small devices -->
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
             <div class="bk-root">
     <div class="bk-plotdiv w3-center" id="229fa230-8cad-41de-bda4-2680464bdac4"></div>
-    <script src="../static/Lending_club_life.js"></script>   
-        {% endif %}
+    <script src="../static/Lending_club_life.js"></script>  
+    </div> 
+</div>
+</div>
 
-        
+<div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
 
-    <div class="w3-container w3-padding-32" id="new_loan">
-
-             <p > <h3 class="w3-center">Model Performance: </h3>  </p>
-          
-<div class="bk-root w3-center">
+ 
+<div class="w3-center">
+ <div class="bk-root w3-center">
     <div class="bk-plotdiv" id="caa6c04d-4389-4071-8d76-60ae9b4438fb"></div>
 </div>
 
 </div>
-<script src="../static/Lending_club_loan_performance.js"></script>      
+<script src="../static/Lending_club_loan_performance.js"></script>    
+    </div>
+</div>
+    <!-- Hide this text on small devices -->
+
+    <div class="w3-col m4 w3-hide-small w3-padding-large">
+           
+     <div class="bk-root">
+    <div class="bk-plotdiv" id="3bf50cf8-bc7d-4b9c-a4cc-6daa6aa70e78"></div>
+</div>
+<script src="../static/Lending_club_chargeoff.js"></script>    
+</div>
+</div>
+
+ {% endif %}  
+ 
+
+
+
+
+    <div class="w3-container w3-padding-32" id="new_loan">
+
+
+
+             <p > <h3 class="w3-center">Model Performance: </h3>  </p>
+          
+  
    
 
-<h3> What's your risk appetite: </h3>
-<div class="slidecontainer">
-  <input type="range" min="0" max="50" value="50" class="slider" id="myRange" name = 'risk_appetite'>
-</div>
-<p> Please select loan risk percentage.
-
-
-
-<h1>{{name}}</h1>
-{{data | safe}}
-
-
-{% if status.code==1 %}
-
-
-{% endif %}
 
 
 

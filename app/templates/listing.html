@@ -14,6 +14,10 @@ td, th {
     text-align: left;
     padding: 8px;
 }
+tr:hover
+{
+   text-decoration: underline;
+}
 
 tr:nth-child(even) {
     background-color: #dddddd;
@@ -53,11 +57,12 @@ tr:nth-child(even) {
 
 
 
-
-
-
-
 <div class="w3-row w3-center ">
+{% if status.code==2 %}
+<h2> No Listing at this risk appetite now, try again later!!! </h2>
+{% endif %}
+
+
 {% if status.code==1 %}
 <h2>{{name}}</h2>
 
@@ -69,17 +74,93 @@ tr:nth-child(even) {
 
 
 <div class="tab-content">
-  <div id="home" class="tab-pane fade in active">
+  <div id="good" class="tab-pane fade in active">
     <h3>Safer Loans</h3>
-{{data_good | safe}}
+
+<table>
+  <tr>
+  {% for title in data_good %}  
+<th>
+  {{title}}
+
+</th>
+{% endfor %}
+  </tr>
+{% for index,row in data_all.iterrows() %}
+{% set link = "https://www.lendingclub.com/browse/loanDetail.action?loan_id=" + row[0]|string +"&previous=browse"%}
+
+<tr onclick = "window.open('{{link}}')"> 
+ 
+{% for i in row %}
+<td>
+  {{i}}
+</td> 
+{% endfor %}
+</tr>
+
+{%endfor%}
+</table>
+
   </div>
-  <div id="menu1" class="tab-pane fade">
+  <div id="bad" class="tab-pane fade">
     <h3>Risky Loans</h3>
- {{data_bad | safe}}
+
+<table>
+  <tr>
+  {% for title in data_bad %}  
+<th>
+  {{title}}
+
+</th>
+{% endfor %}
+  </tr>
+{% for index,row in data_all.iterrows() %}
+{% set link = "https://www.lendingclub.com/browse/loanDetail.action?loan_id=" + row[0]|string +"&previous=browse"%}
+
+<tr onclick = "window.open('{{link}}')"> 
+ 
+{% for i in row %}
+<td>
+  {{i}}
+</td> 
+{% endfor %}
+</tr>
+
+{%endfor%}
+</table>
+
   </div>
-  <div id="menu2" class="tab-pane fade">
+  <div id="data_all" class="tab-pane fade">
     <h3>All Loans</h3>
-  {{data_all | safe}}
+
+<table>
+  <tr>
+  {% for title in data_all %}  
+<th>
+  {{title}}
+
+</th>
+{% endfor %}
+  </tr>
+{% for index,row in data_all.iterrows() %}
+{% set link = "https://www.lendingclub.com/browse/loanDetail.action?loan_id=" + row[0]|string +"&previous=browse"%}
+
+<tr onclick = "window.open('{{link}}')"> 
+ 
+{% for i in row %}
+<td>
+  {{i}}
+</td> 
+{% endfor %}
+</tr>
+
+{%endfor%}
+</table>
+
+
+
+
+
   </div>
 </div>
 
@@ -87,12 +168,12 @@ tr:nth-child(even) {
 
 
 
-<table>
-{%for row in data_all%}
-<tr> <td> {{row}} </td></tr>
 
-{%endfor%}
-</table>
+
+
+
+
+
 {% endif %}
 
 </div>

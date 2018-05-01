@@ -17,7 +17,7 @@
 <div class="m6 w3-hide-small w3-padding-large">
 <p> I hand pick out the features that exists in both my historical data and new listing data retrived from Lending company api. 
 
-The most important features are: Term, FICO Score, Loan Amount, Home Ownership, Dept to Income Ratio, Total Number of Accounts, Credit History, Employment Status, etc. Some of the feature engineering was done here, for example, I take the log of the annual income and reduce the number of categories of the home ownership, The credit history length is computed by the loan application date minus earliest credit line.  For lending club, the joint feature is integrated into the primary application (basically boost his or hers features). </p>
+The most important features are: Term, FICO Score, Loan Amount, Home Ownership, Dept to Income Ratio, Total Number of Accounts, Credit History, Employment Status, etc.  </p>
 </div>
 
 
@@ -70,8 +70,8 @@ The most important features are: Term, FICO Score, Loan Amount, Home Ownership, 
 
  <div class="w3-container w3-padding-32" id="new_loan">
 
-  <p > <h3 class="w3-center">Model Performance: </h3>  </p>
-          
+   <h3 class="w3-center">Model Performance: </h3>  
+  <p >  This model out performs the auto invest option in the leading company’s default option, and each category, the charge-off risk is reduced by at least 10% comparing to the auto investing. Note that this is a high precision model. The cost for an individual investor to miss a good loan is low but accidentally funding a bad loan is high.      </p>
 <div class="bk-root">
     <div class="bk-plotdiv" id="caa6c04d-4389-4071-8d76-60ae9b4438fb"></div>
 </div>
@@ -81,9 +81,27 @@ The most important features are: Term, FICO Score, Loan Amount, Home Ownership, 
 
 
 </div>
+<!---
+ <div class="w3-container w3-padding-32" id="new_loan">
+   <h3 class="w3-center"> Average Charge-Off Loss: </h3>  
+  <p > Each Charge-Off event come with a lost from the investor. </p>
+<div class="bk-root">
+    <div class="bk-plotdiv" id="29739720-604d-45ae-9c01-4fdc863dc9ca"></div>
+</div>
 
+<script src="../static/Lending_club_chargeoff.js"></script>  
 
+</div>
+-->
+  
+ <div class="w3-container w3-padding-32" id="new_loan">
 
+   <h3 class="w3-center"> Expected Return: </h3>  
+<div class="bk-root">
+    <div class="bk-plotdiv" id="3f8c57cc-121f-45ae-a21d-2466c17cf80d"></div>
+</div>
+<script src="../static/Lending_club_expreturn.js"></script>  
+</div>
 
 
 {% endblock %}
