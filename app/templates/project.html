@@ -3,7 +3,7 @@
 <br>
 <br>
   <!-- Project Section -->
-<h2 class="w3-center">PROJECT</h2>
+<h2 class="w3-center">APP</h2>
 <!-- Second Parallax Image with Portfolio Text -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
@@ -12,14 +12,22 @@
 </div>
 
   <div class="w3-row-padding w3-grayscale w3-center">
-    <div class="w3-col l3 m4 w3-margin-bottom">
-      <a href = "#new_loan" ><p><button class="w3-button w3-light-grey w3-block">Predict New Loan</button></p></a>
+
+    <div class="w3-col m6 w3-center w3-padding-large">
+  <a href="/listing">
+      <button class="w3-button w3-black w3-section" >
+        <i class="fa fa-paper-plane"></i> Get New Listing
+      </button></a>     
+
     </div>
-    <div class="w3-col l3 m4 w3-margin-bottom">
+    <div class="w3-col m6 w3-center w3-padding-large">
       <a href = "#current_loan">
-      <p><button class="w3-button w3-light-grey w3-block">Predict Current Loan </button></p></a>
+      <button class="w3-button w3-black w3-section"><i class="fa fa-paper-plane"></i>  Predict Current Loan </button></a>
     </div>
 </div>
+
+
+
   
         {% if status.code==3 %}
           <p class="w3-center"> Probability of paying off on time is {{status.msg}}%  </p>
@@ -31,17 +39,64 @@
         
 
     <div class="w3-container w3-padding-32" id="new_loan">
-   
-        {% if status.code==1 %}
-          <p > <h3 class="w3-center">This loan is {{status.msg}}</h3>  </p>
-          <div class="bk-root w3-center">
-    <div class="bk-plotdiv" id="e3f17bf1-fdfc-47a6-acce-79db7d3bc875"></div>
+
+             <p > <h3 class="w3-center">Model Performance: </h3>  </p>
+          
+<div class="bk-root w3-center">
+    <div class="bk-plotdiv" id="caa6c04d-4389-4071-8d76-60ae9b4438fb"></div>
+</div>
 
 </div>
-<script src="../static/Lending_club_RG.js"></script>   
+<script src="../static/Lending_club_loan_performance.js"></script>      
+   
+
+<h3> What's your risk appetite: </h3>
+<div class="slidecontainer">
+  <input type="range" min="0" max="50" value="50" class="slider" id="myRange" name = 'risk_appetite'>
+</div>
+<p> Please select loan risk percentage.
+
+
+
+<h1>{{name}}</h1>
+{{data | safe}}
+
+
+{% if status.code==1 %}
+
+
+{% endif %}
+
+
+
+
+
+
+<div class="w3-container w3-padding-32" id="current_loan">
+
+    
+  <div class="w3-container w3-padding-32" >
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Please input current 3 year loan feature</h3>
+   
+    <form id='input' action="{{ url_for('project') }}" method=get>
+      <p> Company: <input class="w3-input w3-border" type="text" placeholder="Prosper/ Lending Club" name="company"></p>
+      <p> Grade: <input class="w3-input w3-section w3-border" type="text" placeholder="grade" name="grade"> </p>
+      <p> Days Paid Off: <input class="w3-input w3-section w3-border" type="number" placeholder="# of days paid off"  name="days"> </p>
+      <button class="w3-button w3-black w3-section" type="submit"  value="submit2" >
+        <i class="fa fa-paper-plane"></i> Predict
+      </button>
+    </form>
+
+  </div>
+
+
+</div>
+
+
+<!--
   <div class="w3-container w3-padding-32" >
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-        {% endif %}
+    
 Please input new loan feature</h3>
    
     <form id='input' action="{{ url_for('project') }}" method=get>
@@ -64,28 +119,12 @@ Please input new loan feature</h3>
     </form>
 
   </div>
-</div>
+-->
 
-<div class="w3-container w3-padding-32" id="current_loan">
-
-
-
-  <div class="w3-container w3-padding-32" >
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Please input current 3 year loan feature</h3>
-   
-    <form id='input' action="{{ url_for('project') }}" method=get>
-      <p> Company: <input class="w3-input w3-border" type="text" placeholder="Prosper/ Lending Club" name="company"></p>
-      <p> Grade: <input class="w3-input w3-section w3-border" type="text" placeholder="grade" name="grade"> </p>
-      <p> Days Paid Off: <input class="w3-input w3-section w3-border" type="number" placeholder="# of days paid off"  name="days"> </p>
-      <button class="w3-button w3-black w3-section" type="submit"  value="submit2" >
-        <i class="fa fa-paper-plane"></i> Predict
-      </button>
-    </form>
-
-  </div>
 
 
 </div>
+
 
   <div >
 <!-- <h3 id = "new_risk"></h3>  onclick="myFunction()" -->

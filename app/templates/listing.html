@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<br>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+  <!-- Project Section -->
+<h2 class="w3-center">Get New Listing</h2>
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide"></span>
+  </div>
+</div>
+
+
+
+        
+
+   
+
+
+<form action="{{ url_for('listing') }}" method=get>
+      <label>Please select your risk appetite:</label>
+      <select name="risk">
+        <option value="ANY" {% if risk=='ANY' %}selected{% endif %}>ANY risk</option>
+        <option value="A" {% if risk=='A' %}selected{% endif %}>5% risk</option>
+        <option value="B" {% if risk=='B' %}selected{% endif %}>10% risk</option>
+        <option value="C" {% if risk=='C' %}selected{% endif %}>15% risk</option>
+        <option value="D" {% if risk=='D' %}selected{% endif %}>20% risk</option>
+        <option value="E" {% if risk=='E' %}selected{% endif %}>25% risk</option>
+        <option value="F" {% if risk=='F' %}selected{% endif %}>30% risk</option>
+        <option value="G" {% if risk=='G' %}selected{% endif %}>35% risk</option>
+      </select>
+      <input class="button-primary" type="submit" value="Show Listings"/>
+      </form>
+
+
+
+
+
+
+
+
+<div class="w3-row w3-center ">
+{% if status.code==1 %}
+<h2>{{name}}</h2>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#good">Safer Loans</a></li>
+  <li><a data-toggle="tab" href="#bad">Risky Loans</a></li>
+  <li><a data-toggle="tab" href="#data_all">All Loans</a></li>
+</ul>
+
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <h3>Safer Loans</h3>
+{{data_good | safe}}
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <h3>Risky Loans</h3>
+ {{data_bad | safe}}
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h3>All Loans</h3>
+  {{data_all | safe}}
+  </div>
+</div>
+
+
+
+
+
+<table>
+{%for row in data_all%}
+<tr> <td> {{row}} </td></tr>
+
+{%endfor%}
+</table>
+{% endif %}
+
+</div>
+
+
+{% if status.code==0 %}
+<h2>{{name}}</h2>
+{{data | safe}}
+
+{% endif %}
+
+</div>
+
+
+
+
+
+  
+
+ 
+{% endblock %}

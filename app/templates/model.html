@@ -15,7 +15,9 @@
 <div class="w3-content w3-container w3-padding-64" id="about">
 <h3 class="w3-center">Loan Features</h3>
 <div class="m6 w3-hide-small w3-padding-large">
-<p> I hand pick out the features that exists in both Lending Club and Prosper and run linear regression with lasso regularization to predict the interest rate with given feature. The most important features are: Term, FICO Score, Loan Amount, Home Ownership, Dept to Income Ratio, Total Number of Accounts, Credit History, Employment Status, etc. Some of the feature engineering was done here, for example, I take the log of the annual income and reduce the number of categories of the home ownership, The credit history length is computed by the loan application date minus earliest credit line.  For lending club, the joint feature is integrated into the primary application (basically boost his or hers features). </p>
+<p> I hand pick out the features that exists in both my historical data and new listing data retrived from Lending company api. 
+
+The most important features are: Term, FICO Score, Loan Amount, Home Ownership, Dept to Income Ratio, Total Number of Accounts, Credit History, Employment Status, etc. Some of the feature engineering was done here, for example, I take the log of the annual income and reduce the number of categories of the home ownership, The credit history length is computed by the loan application date minus earliest credit line.  For lending club, the joint feature is integrated into the primary application (basically boost his or hers features). </p>
 </div>
 
 
@@ -36,13 +38,17 @@
      Hide this text on small devices -->
   <div class="w3-row">
     <div class="m6 w3-center w3-padding-large">
-          <p><b><i class="fa fa-user w3-margin-right"></i>Gradient Boosting Classifer</b></p><br>
-      <img src="../static/GBoost.jpg" class="w3-round w3-image" alt="Gradient Boosting" width="800" height="400">
+          <p><b><i class="fa fa-user w3-margin-right"></i>Logistic Regression Classifer</b></p><br>
+    
+<div class="bk-root">
+    <div class="bk-plotdiv" id="fcbea72b-6d84-441c-b748-9c7789d18e7b"></div>
+</div>
+<script src="../static/Lending_club_feature_importance.js"></script>   
   </div>
 
 
     <div class="m6 w3-hide-small w3-padding-large">
-      <p> In order to predict the loan risk, I used a gradient boosting classifier. Gradient boosting is a machine learning technique which produces a prediction model in the form of an ensemble of weak prediction models. It builds the model in a stage-wise fashion and learn from its mistake from the previous step. I chose gradient boosting for its performance. Also, investor care more about whether the loan is safe or not, rather why it is not safe. Therefore interpretability is not the most important factor here.</p>
+      <p> In order to predict the loan risk, I used a Balanced Logistic regression model. </p>
     </div>
   </div>
 
@@ -62,7 +68,16 @@
   </div>
 
 
+ <div class="w3-container w3-padding-32" id="new_loan">
 
+  <p > <h3 class="w3-center">Model Performance: </h3>  </p>
+          
+<div class="bk-root">
+    <div class="bk-plotdiv" id="caa6c04d-4389-4071-8d76-60ae9b4438fb"></div>
+</div>
+
+</div>
+<script src="../static/Lending_club_loan_performance.js"></script>      
 
 
 </div>
