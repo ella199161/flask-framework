@@ -161,9 +161,12 @@ def listing():
 
 # start the server with the 'run()' method
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
+	import os
+	remote = os.environ.get('REMOTE', False)
+	if not remote :
+    	app.run(debug=True )
+	else:
+    	app.run(debug=True , host = '0.0.0.0')
 
 """pipeA = pickle.load(open("pipeA.pickle", "rb"))		
 		ListingA = Listing[Listing['grade'] == 'A']
