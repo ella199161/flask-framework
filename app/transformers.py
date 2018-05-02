@@ -3,11 +3,8 @@ import numpy as np
 import os
 import datetime
 import time
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score
-from sklearn.metrics import roc_curve, auc, confusion_matrix
 from datetime import timedelta, datetime
 import math
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder 
