@@ -42,9 +42,9 @@ class CreditTimeTransformer(base.BaseEstimator, base.TransformerMixin):
         # column for each in self.col_names
         X[self.credit_L] = pd.to_datetime(X[self.credit_L])
         X[self.issued] = pd.to_datetime(X[self.issued])
-        X[self.credit_L] = (X[self.issued] - X[self.credit_L]).apply(lambda x: x.days)
-        
+        X[self.credit_L] = (X[self.issued] - X[self.credit_L]).apply(lambda x: x.days)      
         return X
+
 class NaInputeTransformer(base.BaseEstimator, base.TransformerMixin):
     
     def __init__(self, zerox_inp, mean_inp, maj_inp):

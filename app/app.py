@@ -73,6 +73,7 @@ def project():
 	grade = request.args.get('grade')
 	company = request.args.get('company')
 	days = request.args.get('days') 
+	company = "Lending Club"
 	if company == "Lending Club" or company == "Lending club":
 		Lending_p = pickle.load(open('Lending_club_fit_param.pickle', 'rb'))
 		para_map = {'A':0 , 'B':1, 'C':2, 'D':3, 'E':4, 'F':5, 'G':6}
