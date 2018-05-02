@@ -39,7 +39,7 @@ tr:nth-child(even) {
    
 
 
-<form action="{{ url_for('listing') }}" method=get>
+<form class="w3-row w3-center"  action="{{ url_for('listing') }}" method=get>
       <label>Please select your risk appetite:</label>
       <select name="risk">
         <option value="ANY" {% if risk=='ANY' %}selected{% endif %}>ANY risk</option>

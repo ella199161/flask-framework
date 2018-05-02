@@ -4,38 +4,46 @@
 <br>
 <br>
 
-<h2 class="w3-center">MODEL</h2>
+<h2 class="w3-center">MODEL PERFORMANCE</h2>
 <!-- Container (About Section) -->
 
+<div class="w3-row">
+    <div class="w3-col m6 w3-padding-large">
+
+<div class="bk-root">
+    <div class="bk-plotdiv" id="3f8c57cc-121f-45ae-a21d-2466c17cf80d"></div>
+</div>
+<script src="../static/Lending_club_expreturn.js"></script>  
+ 
+    </div>
+
+    <div class="w3-col m6  w3-padding-large">
+
+<div class="bk-root">
+    <div class="bk-plotdiv" id="3d6511f3-0b55-4a02-9963-717c492acddf"></div>
+</div>
+<script src="../static/Lending_club_loan_performance.js"></script> 
+
+    </div>
+  </div>
+  <div class="w3-padding-large">
+<p >  This model out performs the auto invest option in the leading company’s default option, and each category, the charge-off risk is reduced by at least 10% comparing to the auto investing. Note that this is a high precision model. The cost for an individual investor to miss a good loan is low but accidentally funding a bad loan is high.      </p>
+
+</div>
 
 
 
 
+<h2 class="w3-center">MODEL DETAILS</h2>
   <div class="w3-row">
-<div class="w3-content w3-container w3-padding-64" id="about">
+<div class="w3-content w3-container w3-padding-64" >
 <h3 class="w3-center">Loan Features</h3>
-<div class="m6 w3-hide-small w3-padding-large">
+<div class="m6 w3-padding-large">
 <p> I hand pick out the features that exists in both my historical data and new listing data retrived from Lending company api. 
 
 The most important features are: Term, FICO Score, Loan Amount, Home Ownership, Dept to Income Ratio, Total Number of Accounts, Credit History, Employment Status, etc.  </p>
 </div>
 
-
-    <!--
-    <div class=" m6 w3-center w3-padding-large">
-          <p><b><i class="fa fa-user w3-margin-right"></i>Linear Regression</b></p><br>
-      <img src="../static/matrix.png" class="w3-round w3-image" alt="Linear Regression">
-  </div>
-
-    
-    <div class=" m6 w3-hide-small w3-padding-large">
-      <p> With given loan application feature, I used linear regression with lasso regularization to predict the interest rate from the two companies.</p>
-    </div>
-  </div>
- <div align = "center"> 
-      <img src="../static/lasso.png" class="w3-round w3-image" alt="Lasso" width="500" height="333">
- </div>
-     Hide this text on small devices -->
   <div class="w3-row">
     <div class="m6 w3-center w3-padding-large">
           <p><b><i class="fa fa-user w3-margin-right"></i>Logistic Regression Classifer</b></p><br>
@@ -47,13 +55,14 @@ The most important features are: Term, FICO Score, Loan Amount, Home Ownership, 
   </div>
 
 
-    <div class="m6 w3-hide-small w3-padding-large">
+    <div class="m6 w3-padding-large">
       <p> In order to predict the loan risk, I used a Balanced Logistic regression model. </p>
     </div>
   </div>
 
-
+</div>
   <div class="w3-row">
+<h3 class="w3-center">Kaplan–Meier Survival Analysis: </h3>  
     <div class="w3-col m6 w3-center w3-padding-large">
       
       <div class="bk-root">
@@ -61,47 +70,33 @@ The most important features are: Term, FICO Score, Loan Amount, Home Ownership, 
     <script src="../static/Lending_club_life.js"></script>   
 </div>
     </div>
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
+    <div class="w3-col m6 w3-padding-large">
 <p> Most investors are aware, lending out money to other people come with a risk. The loan will start when the investor decides to take the risk. How about after the loan start? Should the investor expect the money coming back? Here, I used the Kaplan–Meier estimator and developed a real time loan survival model, basically computes the probability of an ongoing loan being paid off on time given its current activity. Therefore, investors have a batter idea of there money, and lead to smarter investment. </p> 
 
     </div>
   </div>
 
 
- <div class="w3-container w3-padding-32" id="new_loan">
-
-   <h3 class="w3-center">Model Performance: </h3>  
-  <p >  This model out performs the auto invest option in the leading company’s default option, and each category, the charge-off risk is reduced by at least 10% comparing to the auto investing. Note that this is a high precision model. The cost for an individual investor to miss a good loan is low but accidentally funding a bad loan is high.      </p>
-<div class="bk-root">
-    <div class="bk-plotdiv" id="caa6c04d-4389-4071-8d76-60ae9b4438fb"></div>
 </div>
+<div class="w3-row">
 
+   <h3 class="w3-center"> Interesting Fact </h3> 
+  <div class="w3-center w3-padding-large">    
+  <p class="w3-center"> Each Charge-Off event come with a lost from the investor. </p>
+<div class="bk-root" class="w3-center">
+    <div class="bk-plotdiv" id="29739720-604d-45ae-9c01-4fdc863dc9ca" class="w3-center"></div>
 </div>
-<script src="../static/Lending_club_loan_performance.js"></script>      
-
-
-</div>
-<!---
- <div class="w3-container w3-padding-32" id="new_loan">
-   <h3 class="w3-center"> Average Charge-Off Loss: </h3>  
-  <p > Each Charge-Off event come with a lost from the investor. </p>
-<div class="bk-root">
-    <div class="bk-plotdiv" id="29739720-604d-45ae-9c01-4fdc863dc9ca"></div>
-</div>
-
 <script src="../static/Lending_club_chargeoff.js"></script>  
+</div>
 
 </div>
--->
-  
- <div class="w3-container w3-padding-32" id="new_loan">
 
-   <h3 class="w3-center"> Expected Return: </h3>  
-<div class="bk-root">
-    <div class="bk-plotdiv" id="3f8c57cc-121f-45ae-a21d-2466c17cf80d"></div>
-</div>
-<script src="../static/Lending_club_expreturn.js"></script>  
-</div>
+
+
+
+
+
+
 
 
 {% endblock %}

@@ -128,7 +128,7 @@ def listing():
 	Listing['issued'] = date.today()
 	List_col = [i.lower() for i in Listing.columns.values]
 	Listing.columns = List_col
-	cols_to_show = ['id', 'grade', 'annualinc', 'dti', 'delinq2yrs','earliestcrline','ficorangehigh','loanamount', 'intrate']
+	cols_to_show = ['id', 'grade', 'intrate','loanamount', 'annualinc', 'dti', 'ficorangehigh']
 	Listing_show = Listing[cols_to_show]
 
 	Listing = Listing[agree]
@@ -161,7 +161,7 @@ def listing():
 
 
 
-		return render_template('listing.html',status = {'code': 0, 'msg': 'All Listing'} ,  name=filename, data=Listing_show.to_html() )
+		return render_template('listing.html',status = {'code': 0, 'msg': 'All Listing'}  )
 
 
 
