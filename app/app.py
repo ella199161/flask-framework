@@ -12,12 +12,12 @@ from bokeh.models import ColumnDataSource
 from bokeh.models import HoverTool
 from math import pi
 from bokeh.models import DatetimeTickFormatter
-import pickle
+#import pickle
 from sklearn.ensemble import GradientBoostingClassifier
 from urllib.request import urlopen, Request
 import time
-#from transformers import ColumnSelectTransformer, CreditTimeTransformer, NaInputeTransformer, EstimatorTransformer, ColumnUnSelectTransformer,OneColumnSelectTransformer,ReshapeTransformer,MyLabelEncoder
-
+from transformers import * #ColumnSelectTransformer, CreditTimeTransformer, NaInputeTransformer, EstimatorTransformer, ColumnUnSelectTransformer,OneColumnSelectTransformer,ReshapeTransformer,MyLabelEncoder
+from sklearn.externals import joblib
 from datetime import date
 import pandas as pd
 import numpy as np
@@ -32,22 +32,9 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn import base
 from sklearn.pipeline import Pipeline
 from sklearn.pipeline import FeatureUnion
-class ColumnSelectTransformer(base.BaseEstimator, base.TransformerMixin):
-    
-    def __init__(self, col_names):
-        self.col_names = col_names  # We will need these in transform()
-    
-    def fit(self, X, y=None):
-        # This transformer doesn't need to learn anything about the data,
-        # so it can just return self without any further processing
-        return self
-    
-    def transform(self, X):   
-            # Return an array with the same number of rows as X and one
-        # column for each in self.col_names
-        return X[self.col_names]
+from sklearn.externals import joblib as pickle
 
-class CreditTimeTransformer(base.BaseEstimator, base.TransformerMixin):
+"""class CreditTimeTransformer(base.BaseEstimator, base.TransformerMixin):
     
     def __init__(self, credit_L, issued):
         self.credit_L = credit_L  # We will need these in transform()
@@ -64,6 +51,22 @@ class CreditTimeTransformer(base.BaseEstimator, base.TransformerMixin):
         X[self.issued] = pd.to_datetime(X[self.issued])
         X[self.credit_L] = (X[self.issued] - X[self.credit_L]).apply(lambda x: x.days)      
         return X
+
+class ColumnSelectTransformer(base.BaseEstimator, base.TransformerMixin):
+    
+    def __init__(self, col_names):
+        self.col_names = col_names  # We will need these in transform()
+    
+    def fit(self, X, y=None):
+        # This transformer doesn't need to learn anything about the data,
+        # so it can just return self without any further processing
+        return self
+    
+    def transform(self, X):   
+            # Return an array with the same number of rows as X and one
+        # column for each in self.col_names
+        return X[self.col_names]
+
 
 class NaInputeTransformer(base.BaseEstimator, base.TransformerMixin):
     
@@ -202,7 +205,7 @@ full_pipe = Pipeline([
 ])
 
 
-
+"""
 
 
 
