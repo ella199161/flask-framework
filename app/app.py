@@ -20,7 +20,14 @@ from transformers import *
 from datetime import date
 # create the application object
 app = Flask(__name__)
-
+pipeA = pickle.load(open("pipeA.pickle", "rb"))
+pipeB = pickle.load(open("pipeB.pickle", "rb"))
+pipeC = pickle.load(open("pipeC.pickle", "rb"))
+pipeD = pickle.load(open("pipeD.pickle", "rb"))
+pipeE = pickle.load(open("pipeE.pickle", "rb"))
+pipeF = pickle.load(open("pipeF.pickle", "rb"))
+pipeG = pickle.load(open("pipeG.pickle", "rb"))
+agree = pickle.load(open("agree.pickle", "rb"))
 
 # use decorators to link the function to a url
 @app.route('/')
@@ -44,14 +51,7 @@ def project():
 #Listing = result.json()
 #Listing = pd.DataFrame(Listing['loans'])
 
-	pipeA = pickle.load(open("pipeA.pickle", "rb"))
-	pipeB = pickle.load(open("pipeB.pickle", "rb"))
-	pipeC = pickle.load(open("pipeC.pickle", "rb"))
-	pipeD = pickle.load(open("pipeD.pickle", "rb"))
-	pipeE = pickle.load(open("pipeE.pickle", "rb"))
-	pipeF = pickle.load(open("pipeF.pickle", "rb"))
-	pipeG = pickle.load(open("pipeG.pickle", "rb"))
-	agree = pickle.load(open("agree.pickle", "rb"))
+
 	Listing = pd.read_csv('Listing_2d.csv')
 	Listing['issued'] = date.today()
 	List_col = [i.lower() for i in Listing.columns.values]
@@ -118,13 +118,6 @@ def about():
 def listing():
 	risk = request.args.get('risk')
 
-	pipeB = pickle.load(open("pipeB.pickle", "rb"))
-	pipeC = pickle.load(open("pipeC.pickle", "rb"))
-	pipeD = pickle.load(open("pipeD.pickle", "rb"))
-	pipeE = pickle.load(open("pipeE.pickle", "rb"))
-	pipeF = pickle.load(open("pipeF.pickle", "rb"))
-	pipeG = pickle.load(open("pipeG.pickle", "rb"))
-	agree = pickle.load(open("agree.pickle", "rb"))
 	Listing = pd.read_csv('Listing.csv')
 	Listing['issued'] = date.today()
 	List_col = [i.lower() for i in Listing.columns.values]
