@@ -273,26 +273,30 @@ def project():
 		yfit = a * np.exp(-b * xx + c)
 		yy = [min(1, i) for i in yfit]
 		y_end = a * np.exp(-b * 3*365 + c) 
-		y_safe = y_end/yy*100
+		y_safe =y_end/yy*100
 		x_pos = int(days)
-		y_pos = a * np.exp(-b * x_pos + c)
-		py_pos = y_end/y_pos*100
+		y_pos = y_end / (a * np.exp(-b * x_pos + c) )
+		py_pos = y_pos*100
+
+		y_risk = [(y_end/i) for i in yy]
+
 		data = {'days': xx,
 		       'Pay_Off_Prob': y_safe,
-		       'yy': yy}
+		       'yy': y_risk}
 		source = ColumnDataSource(data=data)
 		hover = HoverTool(tooltips = [
 		    ("days", "@days"),
 		    ("Pay Off Prob", "@Pay_Off_Prob %"),
 		] )
-		p = figure(plot_width=600,x_range=(0, 1095),y_range=(0, 1.05), plot_height=400, tools= [hover], toolbar_location='left',title="Loan Survival Prob: {}%".format(py_pos))
+
+		p = figure(plot_width=600, plot_height=400, tools= [hover], toolbar_location='left',title="Loan Survival Prob: {}%".format(py_pos))
 		p.circle(x_pos, y_pos, size=20, color="navy", alpha=0.5)
 		p.line("days",'yy',line_width = 2,source = source)
 		p.xaxis.axis_label_text_font_size = '16pt'
 		p.yaxis.axis_label_text_font_size = '16pt'
 		p.xaxis.major_label_text_font_size="14pt"
 		p.xaxis.axis_label = 'Days'
-		p.yaxis.axis_label = 'Pay Off Prob%'		
+		p.yaxis.axis_label = 'Pay Off Prob%'	
 		script, div = components(p, INLINE)
 		return render_template('project.html',status = {'code': 1, 'msg': 'good'},  plot = {'script':script, 'div':div})
 
