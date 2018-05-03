@@ -243,7 +243,7 @@ def project():
 #Listing = pd.DataFrame(Listing['loans'])
 
 
-	Listing = pd.read_csv('Listing_2d.csv')
+	Listing = pd.read_csv('Listingall.csv')
 	Listing['issued'] = date.today()
 	List_col = [i.lower() for i in Listing.columns.values]
 	Listing.columns = List_col
@@ -272,10 +272,11 @@ def project():
 		a,b,c = Lending_p[para_map[grade]]
 		yfit = a * np.exp(-b * xx + c)
 		yy = [min(1, i) for i in yfit]
-		y_end = a * np.exp(-b * 3*365 + c) 
+		y_end = a * np.exp(-b * (3*365-1) + c) 
 		y_safe =y_end/yy*100
 		x_pos = int(days)
-		y_pos = y_end / (a * np.exp(-b * x_pos + c) )
+		x_pos = min(x_pos, 3*365-1)
+		y_pos = y_end / (yy[x_pos])
 		py_pos = y_pos*100
 
 		y_risk = [(y_end/i) for i in yy]

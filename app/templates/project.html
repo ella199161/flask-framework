@@ -81,8 +81,8 @@
    
     <form id='input' action="{{ url_for('project') }}" method=get>
       <p> Company: <input class="w3-input w3-border" type="text" placeholder="Prosper/ Lending Club" name="company"></p>
-      <p> Grade: <input class="w3-input w3-section w3-border" type="text" placeholder="grade" name="grade"> </p>
-      <p> Days Paid Off: <input class="w3-input w3-section w3-border" type="number" placeholder="# of days paid off"  name="days"> </p>
+      <p> Grade: <input class="w3-input w3-section w3-border" type="text" placeholder="grade" required name="grade"> </p>
+      <p> Days Paid Off: <input class="w3-input w3-section w3-border" type="number" placeholder="# of days paid off" required name="days"> </p>
       <button class="w3-button w3-black w3-section" type="submit"  value="submit2" >
         <i class="fa fa-paper-plane"></i> Predict
       </button>
