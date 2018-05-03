@@ -361,7 +361,7 @@ if __name__ == '__main__':
 	import os
 	remote = os.environ.get('REMOTE', False)
 	if not remote:
-		app.run(debug=True)
+		app.run()
 	else:
 		app.run(debug=True, host='0.0.0.0')
 
